@@ -1,0 +1,15 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  install:
+    desc: Configure python virtual environment.
+    vars:
+      PYTHON_VERSION: 3.9.13
+    cmds:
+      - pyenv install {{.PYTHON_VERSION}} --skip-existing
+      - pyenv local {{.PYTHON_VERSION}}
+      - poetry env use {{.PYTHON_VERSION}}
+      - poetry install
+      # - poetry run pre-commit install
